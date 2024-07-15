@@ -1,0 +1,64 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<div class="container">
+    <div class="card bg-dark text-white mt-4">
+        <div class="card-header">
+            Novo Veículo
+        </div>
+        <div class="card-body">
+            <form method="post" action="/veiculos">
+                <div class="mb-3">
+                    <label for="modelo" class="form-label">Modelo</label>
+                    <input 
+                        type="text" 
+                        class="form-control bg-dark text-white"
+                        id="modelo"
+                        name="modelo"
+                        placeholder="Digite o modelo do veículo"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="ano" class="form-label">Ano</label>
+                    <input 
+                        type="number" 
+                        class="form-control bg-dark text-white"
+                        id="ano"
+                        name="ano"
+                        placeholder="Digite o ano do veículo"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="marcaId" class="form-label">Marca</label>
+                    <select class="form-control bg-dark text-white" id="marcaId" name="marcaId" required>
+                        <% marcas.forEach(marca => { %>
+                            <option value="<%= marca.id %>"><%= marca.nome %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="proprietarioId" class="form-label">Proprietário</label>
+                    <select class="form-control bg-dark text-white" id="proprietarioId" name="proprietarioId" required>
+                        <% proprietarios.forEach(proprietario => { %>
+                            <option value="<%= proprietario.id %>"><%= proprietario.nome %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="categoriaId" class="form-label">Categoria</label>
+                    <select class="form-control bg-dark text-white" id="categoriaId" name="categoriaId" required>
+                        <% categorias.forEach(categoria => { %>
+                            <option value="<%= categoria.id %>"><%= categoria.tipo %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="/veiculos" class="btn btn-warning">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

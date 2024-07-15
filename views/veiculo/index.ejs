@@ -1,0 +1,30 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+<br>
+<div class="container">
+    <a href="/veiculos/novo" class="btn bg-dark text-white" style="margin-bottom: 24px;">Novo Veiculo</a>
+    <br>
+        <table class="table text-white">
+            <thread>
+                <th class="col-4">Veículo</th>
+                <th class="col-4">Proprietario</th>
+                <th class="col-2">Categoria</th>
+                <th class="col-2">Ações</th>
+            </thread>
+            <tbody>
+                <% veiculos.forEach(function(veiculo) { %>
+                    <tr>
+                        <td><%= veiculo.marca ? veiculo.marca.nome : 'Sem Marca' %> - <%= veiculo.modelo %> (<%= veiculo.ano %>)</td>
+                        <td><%= veiculo.proprietario ? veiculo.proprietario.nome : 'Sem proprietário' %></td>
+                        <td><%= veiculo.categoria ? veiculo.categoria.tipo : 'Sem categoria' %></td>
+                        <td>
+                            <a href="/veiculos/<%= veiculo.id %>" class="btn btn-primary">Editar</a>
+                            <a href="/veiculos/delete/<%= veiculo.id %>" onclick="return confirm('Tem certeza que deseja excluir este veículo?');" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        </table>
+</div>
+<%- include('../partials/footer.ejs') %>

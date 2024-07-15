@@ -1,0 +1,40 @@
+<%- include('./partials/head.ejs') %>
+<div class="container">
+    <div 
+        class="card position-absolute bg-dark top-50 start-50 translate-middle"
+        style="width: 18rem;">
+        <div class="card-header text-white font-weight-bold">Login</div>
+        <div class="card-body">
+            <form method="post" action="/usuarios/login">
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        class="form-control bg-dark text-white"
+                        placeholder="Digite o seu e-mail">
+                    <label for="email" class="text-white">Digite o seu e-mail</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input
+                        type="password"
+                        name="senha"
+                        id="senha"
+                        class="form-control bg-dark text-white"
+                        placeholder="Digite a sua senha">
+                    <label for="email" class="text-white">Digite a sua senha</label>
+                </div>
+                <br>
+                <% if(msg != '') { %>
+                    <div class="alert alert-danger">
+                        <%= msg %>
+                    </div>
+                <% }%>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-lg text-white bg-sec">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer.ejs') %>

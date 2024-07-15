@@ -1,0 +1,98 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<br>
+<div class="container">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            Editar Veículo
+        </div>
+        <div class="card-body">
+            <form method="post" action="/veiculos/salvar">
+                <input type="hidden" name="id" value="<%= veiculo.id %>">
+                
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control bg-dark text-white"
+                        name="modelo"
+                        id="modelo"
+                        placeholder="Modelo do veículo"
+                        value="<%= veiculo.modelo %>"
+                        required>
+                    <label for="modelo">Modelo do veículo</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input 
+                        type="number" 
+                        class="form-control bg-dark text-white"
+                        name="ano"
+                        id="ano"
+                        placeholder="Ano do veículo"
+                        value="<%= veiculo.ano %>"
+                        required>
+                    <label for="ano">Ano do veículo</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <select 
+                        class="form-control bg-dark text-white" 
+                        name="marcaId"
+                        id="marcaId"
+                        >
+                        <% marcas.forEach(marca => { %>
+                            <% if(marca.id === veiculo.marcaId) { %>
+                                <option value="<%= marca.id %>" selected><%= marca.nome %></option>
+                            <% } else { %>
+                                <option value="<%= marca.id %>"><%= marca.nome %></option>
+                            <% } %>
+                        <% }) %>
+                    </select>
+                    <label for="marcaId">Selecione a Marca</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <select 
+                        class="form-control bg-dark text-white" 
+                        name="proprietarioId"
+                        id="proprietarioId"
+                        >
+                        <% proprietarios.forEach(proprietario => { %>
+                            <% if(proprietario.id === veiculo.proprietarioId) { %>
+                                <option value="<%= proprietario.id %>" selected><%= proprietario.nome %></option>
+                            <% } else { %>
+                                <option value="<%= proprietario.id %>"><%= proprietario.nome %></option>
+                            <% } %>
+                        <% }) %>
+                    </select>
+                    <label for="proprietarioId">Selecione o Proprietário</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <select 
+                        class="form-control bg-dark text-white" 
+                        name="categoriaId"
+                        id="categoriaId"
+                        required>
+                        <% categorias.forEach(categoria => { %>
+                            <% if(categoria.id === veiculo.categoriaId) { %>
+                                <option value="<%= categoria.id %>" selected><%= categoria.tipo %></option>
+                            <% } else { %>
+                                <option value="<%= categoria.id %>"><%= categoria.tipo %></option>
+                            <% } %>
+                        <% }) %>
+                    </select>
+                    <label for="categoriaId">Selecione a Categoria</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                    <a href="/veiculos" class="btn btn-warning">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

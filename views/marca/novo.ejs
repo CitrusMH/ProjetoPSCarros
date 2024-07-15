@@ -1,0 +1,48 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+<br>
+<div class="container">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            Nova marca
+        </div>
+        <div class="card-body">
+            <form method="post" action="/marcas">
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control bg-dark text-white"
+                        name="nome"
+                        id="nome"
+                        placeholder="Nome da marca"
+                        required>
+                    <label for="nome">Nome da marca</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input 
+                        type="date" 
+                        class="form-control bg-dark text-white"
+                        name="fundacao"
+                        id="fundacao"
+                        placeholder="Data de fundação"
+                        required>
+                    <label for="fundacao">Data de fundação</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input 
+                        type="date" 
+                        class="form-control bg-dark text-white"
+                        name="extincao"
+                        id="extincao"
+                        placeholder="Data de extinção">
+                    <label for="extincao">Data de extinção</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                    <a href="/marcas" class="btn btn-warning">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,14 @@
+.bg-sec{
+    background-color: #171717;
+}
+.hero {
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    color: white;
+    padding: 50px 0;
+}
+
+@media (max-width: 768px) {
+    .hero .col-md-6 {
+        margin-bottom: 20px;
+    }
+}

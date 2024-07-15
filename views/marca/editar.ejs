@@ -1,0 +1,54 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+<br>
+<div class="container">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            Editar marca
+        </div>
+        <div class="card-body">
+            <form method="post" action="/marcas/salvar">
+                <div class="form-floating mb-3">
+                    <input type="hidden" name="id" value="<%= marca.id %>">
+                    <input 
+                        type="text" 
+                        class="form-control bg-dark text-white"
+                        name="nome"
+                        id="nome"
+                        placeholder="Nome da marca"
+                        required
+                        value="<%= marca.nome %>">
+                    <label for="nome">Nome da marca</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input 
+                        type="date" 
+                        class="form-control bg-dark text-white"
+                        name="fundacao"
+                        id="data_fundacao"
+                        placeholder="Data de fundação"
+                        required
+                        value="<%= marca.fundacao ? marca.fundacao.toISOString().split('T')[0] : '' %>">
+                    <label for="data_fundacao">Data de fundação</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input 
+                        type="date" 
+                        class="form-control bg-dark text-white"
+                        name="extincao"
+                        id="data_extincao"
+                        placeholder="Data de extinção"
+                        value="<%= marca.extincao ? marca.extincao.toISOString().split('T')[0] : '' %>">
+                    <label for="data_extincao">Data de extinção</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                    <a href="/marcas" class="btn btn-warning">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>
